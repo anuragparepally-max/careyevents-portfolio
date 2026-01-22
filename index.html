@@ -310,6 +310,32 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
         }
 
+        .company-logo-overlay {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .event-card:hover .company-logo-overlay {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .company-logo-overlay img {
+            height: 35px;
+            width: auto;
+            max-width: 120px;
+            display: block;
+            object-fit: contain;
+        }
+
         .event-card::before {
             content: '';
             position: absolute;
@@ -708,6 +734,9 @@
             <!-- Sports -->
             <a href="events/super-bowl.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80" alt="Super Bowl" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a2/National_Football_League_logo.svg" alt="NFL Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Sports</span>
                     <h3 class="event-title">Super Bowl</h3>
@@ -731,6 +760,9 @@
 
             <a href="events/nba-all-stars.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80" alt="NBA All-Stars" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/0/03/National_Basketball_Association_logo.svg" alt="NBA Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Sports</span>
                     <h3 class="event-title">NBA All-Stars</h3>
@@ -751,6 +783,9 @@
 
             <a href="events/nfl-honors.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&q=80" alt="NFL Honors & Draft" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a2/National_Football_League_logo.svg" alt="NFL Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Sports</span>
                     <h3 class="event-title">NFL Honors & Draft</h3>
@@ -764,6 +799,9 @@
 
             <a href="events/pga-golf.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=80" alt="PGA Golf" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1e/PGA_Tour_logo.svg" alt="PGA Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Sports</span>
                     <h3 class="event-title">PGA Golf Championship</h3>
@@ -778,6 +816,9 @@
             <!-- Fashion & Lifestyle -->
             <a href="events/louis-vuitton-miami.html" class="event-card fade-in" data-category="fashion">
                 <img src="https://images.unsplash.com/photo-1558769132-cb1aea8f1cf8?w=800&q=80" alt="Louis Vuitton Miami" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Louis_Vuitton_logo_and_wordmark.svg" alt="Louis Vuitton Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Fashion & Lifestyle</span>
                     <h3 class="event-title">Louis Vuitton Men's PF Show</h3>
@@ -801,6 +842,9 @@
 
             <a href="events/louis-vuitton-cruise.html" class="event-card fade-in" data-category="fashion">
                 <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80" alt="Louis Vuitton Cruise Shows" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Louis_Vuitton_logo_and_wordmark.svg" alt="Louis Vuitton Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Fashion & Lifestyle</span>
                     <h3 class="event-title">Louis Vuitton Cruise Shows</h3>
@@ -814,6 +858,9 @@
 
             <a href="events/gucci-new-york.html" class="event-card fade-in" data-category="fashion">
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Gucci New York" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Gucci_Logo.svg" alt="Gucci Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Fashion & Lifestyle</span>
                     <h3 class="event-title">Gucci Fashion Events</h3>
@@ -828,6 +875,9 @@
             <!-- Corporate -->
             <a href="events/bcg-summit.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="BCG Summit" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/bcg.com" alt="BCG Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
                     <h3 class="event-title">BCG Executive Summit</h3>
@@ -847,6 +897,9 @@
 
             <a href="events/vanguard-conference.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Vanguard" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/vanguard.com" alt="Vanguard Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
                     <h3 class="event-title">Vanguard Leadership Conference</h3>
@@ -863,6 +916,9 @@
 
             <a href="events/blackrock-summit.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="BlackRock" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/blackrock.com" alt="BlackRock Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
                     <h3 class="event-title">BlackRock Annual Summit</h3>
@@ -879,6 +935,9 @@
 
             <a href="events/jpmorgan-healthcare.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80" alt="JP Morgan" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/jpmorganchase.com" alt="JP Morgan Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
                     <h3 class="event-title">JP Morgan Healthcare Conference</h3>
@@ -896,6 +955,9 @@
             <!-- Technology & Media -->
             <a href="events/nvidia-conference.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Nvidia Conference" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" alt="Nvidia Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Technology</span>
                     <h3 class="event-title">Nvidia GTC Conference</h3>
@@ -912,6 +974,9 @@
 
             <a href="events/oracle-openworld.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Oracle Summit" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Technology</span>
                     <h3 class="event-title">Oracle OpenWorld</h3>
@@ -928,6 +993,9 @@
 
             <a href="events/ibm-think.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="IBM Think" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Technology</span>
                     <h3 class="event-title">IBM Think Conference</h3>
@@ -944,6 +1012,9 @@
 
             <a href="events/nbc-events.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="NBC Events" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/NBC_logo.svg" alt="NBC Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Media</span>
                     <h3 class="event-title">NBC Network Events</h3>
@@ -960,6 +1031,9 @@
 
             <a href="events/toshiba-corporate.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Toshiba Events" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Toshiba_logo.svg" alt="Toshiba Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Technology</span>
                     <h3 class="event-title">Toshiba Corporate Events</h3>
@@ -977,6 +1051,9 @@
             <!-- Healthcare -->
             <a href="events/abbott-conference.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="Abbott Conference" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/abbott.com" alt="Abbott Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
                     <h3 class="event-title">Abbott Medical Conference</h3>
@@ -990,6 +1067,9 @@
 
             <a href="events/cigna-summit.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80" alt="Cigna Summit" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/cigna.com" alt="Cigna Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
                     <h3 class="event-title">Cigna Leadership Summit</h3>
@@ -1003,6 +1083,9 @@
 
             <a href="events/boston-scientific.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1582719366582-1a60174e1bce?w=800&q=80" alt="Boston Scientific" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/bostonscientific.com" alt="Boston Scientific Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
                     <h3 class="event-title">Boston Scientific Annual Meeting</h3>
@@ -1016,6 +1099,9 @@
 
             <a href="events/eli-lilly-summit.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1587370560942-ad2a04eabb6d?w=800&q=80" alt="Eli Lilly" class="event-image">
+                <div class="company-logo-overlay">
+                    <img src="https://logo.clearbit.com/lilly.com" alt="Eli Lilly Logo">
+                </div>
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
                     <h3 class="event-title">Eli Lilly Pharmaceutical Summit</h3>
