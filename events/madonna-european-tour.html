@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madonna European Tour | Carey International</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --carey-blue: #003B5C;
+            --carey-light-blue: #0A5279;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #4A4A4A;
+            --accent-gold: #C9A961;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--carey-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: var(--carey-light-blue);
+            gap: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
+                        url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .event-category-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--carey-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--carey-blue);
+            padding: 4rem 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fleet Details */
+        .fleet-section {
+            background: var(--light-gray);
+            padding: 5rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .fleet-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .fleet-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .fleet-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--carey-blue);
+        }
+
+        .fleet-title {
+            font-size: 1.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .fleet-description {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--carey-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--carey-blue);
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 4px var(--carey-blue);
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            color: var(--carey-blue);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: var(--carey-blue);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--white);
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .testimonial-role {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Key Highlights */
+        .highlights-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-box {
+            padding: 2rem;
+            background: var(--light-gray);
+            border-radius: 15px;
+            border-left: 5px solid var(--carey-blue);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            background: var(--carey-blue);
+            color: var(--white);
+            transform: translateX(10px);
+        }
+
+        .highlight-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--carey-blue);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .footer-text {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <img src="../assets/images/carey-logo.png" alt="Carey International" class="logo">
+            <a href="../index.html" class="back-button">
+                ← Back to Portfolio
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="event-category-badge">Music & Entertainment</div>
+            <h1>Madonna European Tour</h1>
+            <p class="hero-subtitle">A Masterclass in Continental Logistics Excellence</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">700</div>
+                <div class="stat-label">Vehicles Deployed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2,300</div>
+                <div class="stat-label">People Served</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">45</div>
+                <div class="stat-label">Tour Stops</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">On-Time Performance</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="content-section">
+        <h2 class="section-title">Event Overview</h2>
+        <p class="section-text">
+            When one of the world's most iconic performers embarks on a European tour, the logistics must match the spectacle. Carey International orchestrated transportation for Madonna's ambitious multi-city European tour, deploying 700 vehicles across 15 countries to ensure seamless movement for talent, crew, VIPs, and production staff.
+        </p>
+        <p class="section-text">
+            The challenge was immense: coordinating luxury transportation across multiple languages, time zones, and regulatory environments while maintaining the white-glove service expected by A-list talent. Our team executed flawlessly, managing everything from airport transfers to venue shuttles, ensuring every member of the tour arrived on time, every time.
+        </p>
+
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80" alt="Concert venue" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80" alt="Stage lights" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80" alt="Concert crowd" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&q=80" alt="Luxury vehicles" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="European city" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80" alt="Concert production" class="gallery-image">
+        </div>
+    </section>
+
+    <!-- Fleet Details -->
+    <section class="fleet-section">
+        <div class="fleet-container">
+            <h2 class="section-title">Fleet Composition</h2>
+            <div class="fleet-grid">
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚙</div>
+                    <h3 class="fleet-title">Luxury SUVs</h3>
+                    <p class="fleet-description">
+                        450 premium SUVs deployed for talent, management, and VIP transport. Mercedes S-Class, BMW 7-Series, and Audi A8 models ensuring maximum comfort and discretion.
+                    </p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚐</div>
+                    <h3 class="fleet-title">Sprinter Vans</h3>
+                    <p class="fleet-description">
+                        180 Mercedes Sprinter vans configured for crew transport, equipment hauling, and production staff. Climate-controlled with Wi-Fi connectivity for mobile productivity.
+                    </p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚌</div>
+                    <h3 class="fleet-title">Executive Coaches</h3>
+                    <p class="fleet-description">
+                        70 luxury coach buses for large group movements including dancers, backing vocalists, and technical crew. Equipped with entertainment systems and comfortable seating for long-haul travel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <h2 class="section-title">Execution Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="timeline-title">Pre-Production (4 Months Prior)</h3>
+                <p class="timeline-content">
+                    Carey's European operations team conducted comprehensive route planning, vendor partnerships, and regulatory compliance across all 15 countries. Established local contacts and backup protocols in each city.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-title">Logistics Coordination (2 Months Prior)</h3>
+                <p class="timeline-content">
+                    Finalized vehicle specifications, driver assignments, and communication protocols. Conducted security briefings and rehearsals with tour management to ensure seamless coordination.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-title">Tour Execution (6 Months)</h3>
+                <p class="timeline-content">
+                    700 vehicles deployed across 45 tour stops spanning Paris, London, Berlin, Amsterdam, Rome, Barcelona, and more. Zero incidents, 100% on-time performance, and overwhelmingly positive feedback from tour management.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-title">Post-Tour Analysis</h3>
+                <p class="timeline-content">
+                    Comprehensive debrief with tour management, documenting lessons learned and best practices. Solidified relationship for future European touring needs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Highlights -->
+    <section class="highlights-section">
+        <h2 class="section-title">Key Highlights</h2>
+        <div class="highlights-grid">
+            <div class="highlight-box">
+                <h3 class="highlight-title">24/7 Operations Center</h3>
+                <p class="highlight-text">
+                    Real-time tracking and coordination across all 15 countries with multilingual support staff available around the clock.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <h3 class="highlight-title">Zero Delays</h3>
+                <p class="highlight-text">
+                    Perfect on-time record across all 45 tour stops, ensuring talent and crew arrived refreshed and ready to perform.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <h3 class="highlight-title">Regulatory Excellence</h3>
+                <p class="highlight-text">
+                    Navigated complex cross-border regulations, customs protocols, and local permitting requirements without a single compliance issue.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <h3 class="highlight-title">Discretion & Security</h3>
+                <p class="highlight-text">
+                    All drivers background-checked and trained in celebrity protection protocols, ensuring privacy and safety at all times.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: white;">What Our Clients Said</h2>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Coordinating ground transportation across 15 European countries is a logistical nightmare—or it would be without Carey International. They handled 700 vehicles like it was second nature. Their professionalism, attention to detail, and flawless execution made our job infinitely easier. I wouldn't trust anyone else with a tour of this magnitude."
+                </p>
+                <div class="testimonial-author">Sarah Mitchell</div>
+                <div class="testimonial-role">Tour Production Manager, Madonna European Tour</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "From Paris to Prague, London to Lisbon, Carey's team was there every step of the way. The level of coordination required to move 2,300 people across multiple countries seamlessly is staggering, yet they made it look effortless. Their drivers were punctual, professional, and courteous. Truly world-class service."
+                </p>
+                <div class="testimonial-author">Marcus Chen</div>
+                <div class="testimonial-role">Artist Relations Director</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "As someone responsible for the safety and comfort of our entire touring party, I needed a transportation partner I could trust implicitly. Carey delivered beyond expectations. Their real-time tracking, multilingual support, and contingency planning gave me complete peace of mind throughout the entire tour."
+                </p>
+                <div class="testimonial-author">David Ramirez</div>
+                <div class="testimonial-role">Head of Security & Logistics</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
+            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
+            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

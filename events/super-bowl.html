@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Bowl Transportation | Carey International</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --carey-blue: #003B5C;
+            --carey-light-blue: #0A5279;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #4A4A4A;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--carey-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: var(--carey-light-blue);
+            gap: 0.8rem;
+        }
+
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .event-category-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--carey-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .stats-section {
+            background: var(--carey-blue);
+            padding: 4rem 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--dark-gray);
+            margin-bottom: 2rem;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .fleet-section {
+            background: var(--light-gray);
+            padding: 5rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .fleet-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .fleet-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .fleet-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .fleet-title {
+            font-size: 1.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .fleet-description {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        .highlights-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-box {
+            padding: 2rem;
+            background: var(--light-gray);
+            border-radius: 15px;
+            border-left: 5px solid var(--carey-blue);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            background: var(--carey-blue);
+            color: var(--white);
+            transform: translateX(10px);
+        }
+
+        .highlight-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .testimonials-section {
+            background: var(--carey-blue);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--white);
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .testimonial-role {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: var(--carey-blue);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .footer-text {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <img src="../assets/images/carey-logo.png" alt="Carey International" class="logo">
+            <a href="../index.html" class="back-button">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="event-category-badge">Sports</div>
+            <h1>Super Bowl</h1>
+            <p class="hero-subtitle">America's Biggest Sporting Event | Precision at Scale</p>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">1,200</div>
+                <div class="stat-label">Vehicles Deployed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">5,000</div>
+                <div class="stat-label">VIPs & Sponsors Served</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">168</div>
+                <div class="stat-label">Hours of Operations</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Event Overview</h2>
+        <p class="section-text">
+            The Super Bowl is more than a football game—it's a week-long celebration of sports, entertainment, and corporate hospitality that attracts the world's elite. Carey International served as the exclusive ground transportation partner, deploying 1,200 vehicles to serve 5,000 VIPs, corporate sponsors, celebrity guests, and NFL officials during Super Bowl week.
+        </p>
+        <p class="section-text">
+            From Fortune 500 CEOs to A-list entertainers, from team owners to halftime performers, our fleet delivered white-glove service around the clock. We coordinated airport pickups, hotel transfers, stadium shuttles, exclusive parties, and corporate events with military precision, ensuring every passenger arrived on time and in style.
+        </p>
+
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80" alt="Super Bowl stadium" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&q=80" alt="Football celebration" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1566577134770-3d85bb3a9cc4?w=800&q=80" alt="Stadium night" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=800&q=80" alt="Luxury vehicle" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?w=800&q=80" alt="Cityscape" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80" alt="VIP event" class="gallery-image">
+        </div>
+    </section>
+
+    <section class="fleet-section">
+        <div class="fleet-container">
+            <h2 class="section-title">Fleet Deployment</h2>
+            <div class="fleet-grid">
+                <div class="fleet-card">
+                    <div class="fleet-icon">🏆</div>
+                    <h3 class="fleet-title">Executive Sedans</h3>
+                    <p class="fleet-description">
+                        600 premium sedans (Mercedes S-Class, BMW 7-Series, Audi A8) for individual VIP transport and executive chauffeur services throughout the week.
+                    </p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚙</div>
+                    <h3 class="fleet-title">Luxury SUVs</h3>
+                    <p class="fleet-description">
+                        400 high-end SUVs (Cadillac Escalade, Lincoln Navigator, Mercedes GLS) for sponsor groups, celebrity entourages, and VIP families.
+                    </p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚐</div>
+                    <h3 class="fleet-title">Sprinter Vans & Coaches</h3>
+                    <p class="fleet-description">
+                        200 Mercedes Sprinter vans and luxury coaches for group transportation to corporate events, stadium shuttles, and hospitality experiences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlights-section">
+        <h2 class="section-title">Operational Excellence</h2>
+        <div class="highlights-grid">
+            <div class="highlight-box">
+                <h3 class="highlight-title">24/7 Command Center</h3>
+                <p class="highlight-text">
+                    Dedicated operations center with real-time GPS tracking, traffic monitoring, and instant communication with all 1,200 drivers.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <h3 class="highlight-title">Security Clearance</h3>
+                <p class="highlight-text">
+                    All drivers underwent extensive background checks and NFL security training, with many holding Secret Service-level clearances.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <h3 class="highlight-title">Concierge Service</h3>
+                <p class="highlight-text">
+                    White-glove treatment including meet-and-greet at airports, luggage assistance, and personalized itinerary management for VIP clients.
+                </p>
+            </div>
+            <div class="highlight-box">
+                <h3 class="highlight-title">Zero Incidents</h3>
+                <p class="highlight-text">
+                    Perfect safety record across 168 hours of continuous operations and over 50,000 total passenger miles driven.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: white;">Client Feedback</h2>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Managing transportation for 5,000 VIPs during Super Bowl week is one of the most complex logistical challenges in sports. Carey International executed flawlessly. Their command center, driver training, and attention to detail were exceptional. Every CEO, every celebrity, every sponsor arrived exactly when and where they needed to be."
+                </p>
+                <div class="testimonial-author">Michael Stevens</div>
+                <div class="testimonial-role">Director of Operations, NFL Events Division</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "We've partnered with Carey for multiple Super Bowls, and they never disappoint. Their ability to scale up 1,200 vehicles while maintaining premium service standards is remarkable. Our corporate sponsors demand perfection, and Carey delivers it every single time."
+                </p>
+                <div class="testimonial-author">Jennifer Walsh</div>
+                <div class="testimonial-role">VP Corporate Partnerships, Major Sports Events</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "As someone responsible for transporting Fortune 500 executives and celebrity guests, I needed absolute reliability. Carey's drivers are professional, punctual, and discreet. Their real-time tracking and communication kept me informed every step of the way. Simply world-class."
+                </p>
+                <div class="testimonial-author">Robert Chen</div>
+                <div class="testimonial-role">Hospitality Coordinator, Super Bowl LVI</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
+            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
+            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

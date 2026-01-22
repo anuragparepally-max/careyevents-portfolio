@@ -12,13 +12,13 @@
         }
 
         :root {
-            --navy: #0A1128;
-            --black: #000000;
+            --carey-blue: #003B5C;
+            --carey-light-blue: #0A5279;
             --white: #FFFFFF;
-            --gold: #D4AF37;
-            --light-gold: #F4E4C1;
-            --gray: #E8E8E8;
-            --dark-gray: #2C2C2C;
+            --light-gray: #F5F5F5;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #4A4A4A;
+            --accent-gold: #C9A961;
         }
 
         html {
@@ -27,16 +27,62 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--white);
-            background-color: var(--black);
+            color: var(--dark-gray);
+            background-color: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
+        /* Header Navigation */
+        .header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--carey-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--carey-light-blue);
+        }
+
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+            height: 90vh;
+            background: linear-gradient(135deg, var(--carey-blue) 0%, var(--carey-light-blue) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -65,11 +111,21 @@
             max-width: 1200px;
         }
 
+        .hero-logo {
+            margin-bottom: 3rem;
+        }
+
+        .hero-logo img {
+            height: 120px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
         .hero h1 {
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: var(--gold);
+            color: var(--white);
             text-transform: uppercase;
             letter-spacing: 3px;
             animation: fadeInUp 1s ease-out;
@@ -78,18 +134,18 @@
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2.5rem;
-            color: var(--light-gold);
+            color: var(--white);
             animation: fadeInUp 1.2s ease-out;
         }
 
         .cta-button {
             display: inline-block;
             padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, var(--gold) 0%, #B8941E 100%);
-            color: var(--black);
+            background: var(--white);
+            color: var(--carey-blue);
             text-decoration: none;
             font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 50px;
             transition: all 0.3s ease;
             animation: fadeInUp 1.4s ease-out;
@@ -99,7 +155,8 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+            background: var(--light-gray);
         }
 
         @keyframes fadeInUp {
@@ -115,10 +172,8 @@
 
         /* Impact Dashboard */
         .impact-dashboard {
-            background: var(--navy);
+            background: var(--carey-blue);
             padding: 5rem 2rem;
-            border-top: 3px solid var(--gold);
-            border-bottom: 3px solid var(--gold);
         }
 
         .metrics-container {
@@ -132,29 +187,30 @@
         .metric-card {
             text-align: center;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            border: 2px solid rgba(212, 175, 55, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
 
         .metric-card:hover {
             transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         .metric-number {
             font-size: 3.5rem;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--white);
             margin-bottom: 0.5rem;
             font-variant-numeric: tabular-nums;
         }
 
         .metric-label {
             font-size: 1.1rem;
-            color: var(--light-gold);
+            color: var(--white);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -170,7 +226,7 @@
             font-size: 3rem;
             text-align: center;
             margin-bottom: 1rem;
-            color: var(--gold);
+            color: var(--carey-blue);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -178,7 +234,7 @@
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
-            color: var(--light-gold);
+            color: var(--dark-gray);
             margin-bottom: 4rem;
             max-width: 800px;
             margin-left: auto;
@@ -196,9 +252,9 @@
 
         .filter-btn {
             padding: 0.8rem 2rem;
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            background: var(--white);
+            border: 2px solid var(--carey-blue);
+            color: var(--carey-blue);
             cursor: pointer;
             border-radius: 30px;
             font-size: 1rem;
@@ -210,8 +266,8 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--gold);
-            color: var(--black);
+            background: var(--carey-blue);
+            color: var(--white);
             transform: translateY(-2px);
         }
 
@@ -224,18 +280,22 @@
         }
 
         .event-card {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--dark-gray) 100%);
+            background: var(--white);
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.4s ease;
-            border: 2px solid rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--medium-gray);
             position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
         .event-card:hover {
             transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+            border-color: var(--carey-blue);
+            box-shadow: 0 20px 50px rgba(0, 59, 92, 0.3);
         }
 
         .event-image {
@@ -255,8 +315,8 @@
 
         .event-category {
             display: inline-block;
-            background: var(--gold);
-            color: var(--black);
+            background: var(--carey-blue);
+            color: var(--white);
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -269,13 +329,13 @@
         .event-title {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            color: var(--white);
+            color: var(--carey-blue);
             font-weight: 700;
         }
 
         .event-location {
             font-size: 1rem;
-            color: var(--light-gold);
+            color: var(--dark-gray);
             margin-bottom: 1.5rem;
         }
 
@@ -285,7 +345,7 @@
             gap: 1rem;
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-top: 1px solid var(--medium-gray);
         }
 
         .stat {
@@ -295,13 +355,13 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--carey-blue);
             display: block;
         }
 
         .stat-label {
             font-size: 0.85rem;
-            color: var(--light-gold);
+            color: var(--dark-gray);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -309,16 +369,28 @@
         .event-fleet {
             margin-top: 1rem;
             font-size: 0.9rem;
-            color: var(--gray);
+            color: var(--dark-gray);
         }
 
         .event-fleet strong {
-            color: var(--gold);
+            color: var(--carey-blue);
+        }
+
+        .view-details {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--carey-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .view-details:hover {
+            text-decoration: underline;
         }
 
         /* Testimonials */
         .testimonials {
-            background: var(--navy);
+            background: var(--light-gray);
             padding: 6rem 2rem;
             margin: 4rem 0;
         }
@@ -332,43 +404,43 @@
         }
 
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--white);
             padding: 3rem;
             border-radius: 15px;
-            border-left: 5px solid var(--gold);
+            border-left: 5px solid var(--carey-blue);
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .testimonial-text {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2rem;
-            color: var(--white);
+            color: var(--dark-gray);
             font-style: italic;
         }
 
         .testimonial-author {
             font-weight: 700;
-            color: var(--gold);
+            color: var(--carey-blue);
             font-size: 1.1rem;
         }
 
         .testimonial-role {
-            color: var(--light-gold);
+            color: var(--dark-gray);
             font-size: 0.95rem;
         }
 
         /* Footer */
         .footer {
-            background: var(--black);
+            background: var(--carey-blue);
             padding: 3rem 2rem;
             text-align: center;
-            border-top: 2px solid var(--gold);
         }
 
         .footer-content {
@@ -379,12 +451,12 @@
         .footer-logo {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--white);
             margin-bottom: 1rem;
         }
 
         .footer-text {
-            color: var(--gray);
+            color: var(--white);
             margin-bottom: 0.5rem;
         }
 
@@ -413,6 +485,10 @@
             .testimonial-grid {
                 grid-template-columns: 1fr;
             }
+
+            .nav-menu {
+                display: none;
+            }
         }
 
         /* Fade-in animation for scroll */
@@ -430,9 +506,28 @@
 </head>
 <body>
 
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="assets/images/carey-logo.png" alt="Carey International" class="logo">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#impact">Our Impact</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
+            <div class="hero-logo">
+                <img src="assets/images/carey-logo.png" alt="Carey International">
+            </div>
             <h1>Global Logistics. Precision Execution. Unmatched Scale.</h1>
             <p>The preferred transportation partner for the world's largest tours, sports leagues, and Fortune 500 summits.</p>
             <a href="#impact" class="cta-button">View Our Impact</a>
@@ -462,7 +557,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section class="section">
+    <section id="portfolio" class="section">
         <h2 class="section-title">Event Portfolio</h2>
         <p class="section-subtitle">From global entertainment tours to Fortune 500 summits, we deliver precision logistics at unprecedented scale.</p>
 
@@ -478,7 +573,7 @@
 
         <div class="portfolio-grid">
             <!-- Music & Entertainment -->
-            <div class="event-card fade-in" data-category="music">
+            <a href="events/beyonce-european-tour.html" class="event-card fade-in" data-category="music">
                 <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80" alt="Beyoncé Tour" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Music & Entertainment</span>
@@ -497,10 +592,11 @@
                     <div class="event-fleet">
                         <strong>Fleet:</strong> SUV, Sprinter VAN, Mini Bus
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="music">
+            <a href="events/madonna-european-tour.html" class="event-card fade-in" data-category="music">
                 <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80" alt="Madonna Tour" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Music & Entertainment</span>
@@ -516,10 +612,11 @@
                             <span class="stat-label">People Served</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="music">
+            <a href="events/kylie-minogue-european-tour.html" class="event-card fade-in" data-category="music">
                 <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="Kylie Minogue Tour" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Music & Entertainment</span>
@@ -535,10 +632,11 @@
                             <span class="stat-label">People Served</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="music">
+            <a href="events/foo-fighters-european-tour.html" class="event-card fade-in" data-category="music">
                 <img src="https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=800&q=80" alt="Foo Fighters Tour" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Music & Entertainment</span>
@@ -554,10 +652,11 @@
                             <span class="stat-label">People Served</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="music">
+            <a href="events/global-citizens-concert.html" class="event-card fade-in" data-category="music">
                 <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80" alt="Global Citizens Concert" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Music & Entertainment</span>
@@ -566,11 +665,12 @@
                     <div class="event-fleet">
                         <strong>Role:</strong> Managed Main Stage Talent Transportation
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Sports -->
-            <div class="event-card fade-in" data-category="sports">
+            <a href="events/super-bowl.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80" alt="Super Bowl" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Sports</span>
@@ -589,10 +689,11 @@
                     <div class="event-fleet">
                         <strong>Role:</strong> Full fleet deployment for VIPs & Sponsors
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="sports">
+            <a href="events/nba-all-stars.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80" alt="NBA All-Stars" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Sports</span>
@@ -608,10 +709,11 @@
                             <span class="stat-label">People Served</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="sports">
+            <a href="events/nfl-honors.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&q=80" alt="NFL Honors & Draft" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Sports</span>
@@ -620,10 +722,11 @@
                     <div class="event-fleet">
                         <strong>Role:</strong> Official Talent & Entertainment transportation partner annually since 2011
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="sports">
+            <a href="events/pga-golf.html" class="event-card fade-in" data-category="sports">
                 <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=80" alt="PGA Golf" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Sports</span>
@@ -632,11 +735,12 @@
                     <div class="event-fleet">
                         <strong>Client:</strong> PGA Golf - Premium transportation services
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Fashion & Lifestyle -->
-            <div class="event-card fade-in" data-category="fashion">
+            <a href="events/louis-vuitton-miami.html" class="event-card fade-in" data-category="fashion">
                 <img src="https://images.unsplash.com/photo-1558769132-cb1aea8f1cf8?w=800&q=80" alt="Louis Vuitton Miami" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Fashion & Lifestyle</span>
@@ -655,10 +759,11 @@
                     <div class="event-fleet">
                         <strong>Duration:</strong> 5 Days of premium service
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="fashion">
+            <a href="events/louis-vuitton-cruise.html" class="event-card fade-in" data-category="fashion">
                 <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80" alt="Louis Vuitton Cruise Shows" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Fashion & Lifestyle</span>
@@ -667,10 +772,11 @@
                     <div class="event-fleet">
                         <strong>Years:</strong> New York (2019), San Diego (2023), Palm Springs
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="fashion">
+            <a href="events/gucci-new-york.html" class="event-card fade-in" data-category="fashion">
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Gucci New York" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Fashion & Lifestyle</span>
@@ -679,11 +785,12 @@
                     <div class="event-fleet">
                         <strong>Service:</strong> White-glove transportation for exclusive fashion events
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- Corporate & Consulting -->
-            <div class="event-card fade-in" data-category="corporate">
+            <!-- Corporate -->
+            <a href="events/bcg-summit.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="BCG Summit" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
@@ -698,10 +805,11 @@
                     <div class="event-fleet">
                         <strong>Service:</strong> Secure, discreet, and seamless movement for C-Suite executives
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="corporate">
+            <a href="events/vanguard-conference.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Vanguard" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
@@ -713,10 +821,11 @@
                             <span class="stat-label">Executive Sedans</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="corporate">
+            <a href="events/blackrock-summit.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="BlackRock" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
@@ -728,10 +837,11 @@
                             <span class="stat-label">Executive Sedans</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="corporate">
+            <a href="events/jpmorgan-healthcare.html" class="event-card fade-in" data-category="corporate">
                 <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80" alt="JP Morgan" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Corporate</span>
@@ -743,11 +853,12 @@
                             <span class="stat-label">Executive Sedans</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Technology & Media -->
-            <div class="event-card fade-in" data-category="technology">
+            <a href="events/nvidia-conference.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Nvidia Conference" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Technology</span>
@@ -759,10 +870,11 @@
                             <span class="stat-label">Attendees Transported</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="technology">
+            <a href="events/oracle-openworld.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Oracle Summit" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Technology</span>
@@ -774,10 +886,11 @@
                             <span class="stat-label">Attendees Transported</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="technology">
+            <a href="events/ibm-think.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="IBM Think" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Technology</span>
@@ -789,10 +902,11 @@
                             <span class="stat-label">Attendees Transported</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="technology">
+            <a href="events/nbc-events.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="NBC Events" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Media</span>
@@ -804,10 +918,11 @@
                             <span class="stat-label">Attendees Transported</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="technology">
+            <a href="events/toshiba-corporate.html" class="event-card fade-in" data-category="technology">
                 <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Toshiba Events" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Technology</span>
@@ -819,11 +934,12 @@
                             <span class="stat-label">Attendees Transported</span>
                         </div>
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Healthcare -->
-            <div class="event-card fade-in" data-category="healthcare">
+            <a href="events/abbott-conference.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="Abbott Conference" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
@@ -832,10 +948,11 @@
                     <div class="event-fleet">
                         <strong>Service:</strong> Premium executive transportation for healthcare leaders
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="healthcare">
+            <a href="events/cigna-summit.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80" alt="Cigna Summit" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
@@ -844,10 +961,11 @@
                     <div class="event-fleet">
                         <strong>Service:</strong> Comprehensive fleet services for corporate healthcare events
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="healthcare">
+            <a href="events/boston-scientific.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1582719366582-1a60174e1bce?w=800&q=80" alt="Boston Scientific" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
@@ -856,10 +974,11 @@
                     <div class="event-fleet">
                         <strong>Service:</strong> Executive transportation for medical device industry leaders
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="event-card fade-in" data-category="healthcare">
+            <a href="events/eli-lilly-summit.html" class="event-card fade-in" data-category="healthcare">
                 <img src="https://images.unsplash.com/photo-1587370560942-ad2a04eabb6d?w=800&q=80" alt="Eli Lilly" class="event-image">
                 <div class="event-content">
                     <span class="event-category">Healthcare</span>
@@ -868,13 +987,14 @@
                     <div class="event-fleet">
                         <strong>Service:</strong> Discreet and reliable transportation for pharmaceutical executives
                     </div>
+                    <span class="view-details">View Full Case Study →</span>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials">
+    <section id="testimonials" class="testimonials">
         <h2 class="section-title">Client Testimonials</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card fade-in">
