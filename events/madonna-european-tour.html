@@ -321,40 +321,132 @@
         }
 
         /* Testimonials */
-        .testimonials-section {
-            background: var(--carey-blue);
+                .testimonials-section {
+            background: linear-gradient(135deg, #003B5C 0%, #0A5279 100%);
             padding: 6rem 2rem;
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .testimonials-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
         .testimonials-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 3rem;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 3.5rem;
+            border-radius: 24px;
             margin-bottom: 2rem;
-            border-left: 5px solid var(--white);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
 
-        .testimonial-text {
-            font-size: 1.3rem;
-            line-height: 1.9;
-            font-style: italic;
-            margin-bottom: 2rem;
-        }
-
-        .testimonial-author {
-            font-size: 1.2rem;
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 6rem;
+            font-family: Georgia, serif;
+            color: var(--carey-blue);
+            opacity: 0.15;
+            line-height: 1;
             font-weight: 700;
         }
 
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-rating span {
+            color: #FFB800;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
+            color: var(--dark-gray);
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+        }
+
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--light-gray);
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--carey-blue), var(--carey-light-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--carey-blue);
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+        }
+
         .testimonial-role {
-            font-size: 1rem;
-            opacity: 0.9;
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
 
         /* Key Highlights */
@@ -586,27 +678,51 @@
             <h2 class="section-title" style="color: white;">What Our Clients Said</h2>
 
             <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
                 <p class="testimonial-text">
                     "Coordinating ground transportation across 15 European countries is a logistical nightmare—or it would be without Carey International. They handled 700 vehicles like it was second nature. Their professionalism, attention to detail, and flawless execution made our job infinitely easier. I wouldn't trust anyone else with a tour of this magnitude."
                 </p>
-                <div class="testimonial-author">Sarah Mitchell</div>
-                <div class="testimonial-role">Tour Production Manager, Madonna European Tour</div>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar">SM</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-author">Sarah Mitchell</div>
+                        <div class="testimonial-role">Tour Production Manager, Madonna European Tour</div>
+                    </div>
+                </div>
             </div>
 
             <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
                 <p class="testimonial-text">
                     "From Paris to Prague, London to Lisbon, Carey's team was there every step of the way. The level of coordination required to move 2,300 people across multiple countries seamlessly is staggering, yet they made it look effortless. Their drivers were punctual, professional, and courteous. Truly world-class service."
                 </p>
-                <div class="testimonial-author">Marcus Chen</div>
-                <div class="testimonial-role">Artist Relations Director</div>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar">MC</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-author">Marcus Chen</div>
+                        <div class="testimonial-role">Artist Relations Director</div>
+                    </div>
+                </div>
             </div>
 
             <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
                 <p class="testimonial-text">
                     "As someone responsible for the safety and comfort of our entire touring party, I needed a transportation partner I could trust implicitly. Carey delivered beyond expectations. Their real-time tracking, multilingual support, and contingency planning gave me complete peace of mind throughout the entire tour."
                 </p>
-                <div class="testimonial-author">David Ramirez</div>
-                <div class="testimonial-role">Head of Security & Logistics</div>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar">DR</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-author">David Ramirez</div>
+                        <div class="testimonial-role">Head of Security & Logistics</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
