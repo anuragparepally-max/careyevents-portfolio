@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFL Honors | Carey International</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --carey-blue: #003B5C;
+            --carey-light-blue: #0A5279;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #4A4A4A;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        .header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--carey-blue);
+            letter-spacing: 2px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--carey-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover { color: var(--carey-light-blue); gap: 0.8rem; }
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-content { max-width: 900px; padding: 2rem; }
+        .event-category-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--carey-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero-subtitle { font-size: 1.5rem; opacity: 0.95; }
+        .stats-section {
+            background: var(--carey-blue);
+            padding: 4rem 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .stat-box:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
+        .stat-number { font-size: 3.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1.1rem; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+        .content-section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .section-text { font-size: 1.2rem; line-height: 1.9; color: var(--dark-gray); margin-bottom: 2rem; }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-image:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); }
+        .testimonials-section {
+            background: var(--carey-blue);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+        .testimonials-container { max-width: 1200px; margin: 0 auto; }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--white);
+        }
+        .testimonial-text { font-size: 1.3rem; line-height: 1.9; font-style: italic; margin-bottom: 2rem; }
+        .testimonial-author { font-size: 1.2rem; font-weight: 700; }
+        .testimonial-role { font-size: 1rem; opacity: 0.9; }
+        .footer { background: var(--carey-blue); padding: 3rem 2rem; text-align: center; color: var(--white); }
+        .footer-text { margin-bottom: 0.5rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-text">CAREY INTERNATIONAL</div>
+            <a href="../index.html" class="back-button">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="event-category-badge">Sports</div>
+            <h1>NFL Honors</h1>
+            <p class="hero-subtitle">Award-Winning Transportation for Football's Premier Night</p>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">350</div>
+                <div class="stat-label">Vehicles Deployed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2,000</div>
+                <div class="stat-label">People Served</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">13+</div>
+                <div class="stat-label">Years Since 2011</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">On-Time Performance</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Event Overview</h2>
+        <p class="section-text">
+            NFL Honors stands as professional football's premier awards ceremony, celebrating the league's most outstanding players and performances each season. Since 2011, Carey International has been the exclusive ground transportation provider for this prestigious event, deploying 350 vehicles annually to serve 2,000 attendees including NFL players, coaches, executives, media, and celebrity guests.
+        </p>
+        <p class="section-text">
+            The event, held the night before the Super Bowl, requires flawless execution in a high-pressure environment. Our team coordinates transportation for MVP candidates, Hall of Fame inductees, league officials, broadcast talent, and VIP sponsors across multiple hotels and venues. Working in close partnership with NFL event staff and security teams, we manage complex logistics including red carpet arrivals, after-party departures, and late-night hotel returns.
+        </p>
+        <p class="section-text">
+            Over 13 consecutive years, Carey has maintained a perfect track record of on-time performance, ensuring that football's biggest stars arrive ready to celebrate the sport's greatest achievements. Our experienced chauffeurs provide the discretion, professionalism, and reliability expected for the NFL's most elegant evening, making us the trusted transportation partner for this annual tradition.
+        </p>
+
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800&q=80" alt="Football stadium" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800&q=80" alt="NFL event" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=800&q=80" alt="Awards ceremony venue" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&q=80" alt="Red carpet event" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Luxury transportation" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&q=80" alt="Evening event" class="gallery-image">
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: white;">Client Testimonials</h2>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Carey International has been our transportation partner for NFL Honors since 2011, and there's a reason we keep coming back. Year after year, they deliver flawless execution for one of our most important events. Managing ground transportation for 2,000 people on Super Bowl weekend requires incredible coordination, and Carey makes it look effortless every single time."
+                </p>
+                <div class="testimonial-author">James Peterson</div>
+                <div class="testimonial-role">NFL Special Events Director</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "The professionalism and reliability Carey brings to NFL Honors is unmatched. Their drivers understand the importance of discretion when transporting high-profile players and celebrities. They coordinate seamlessly with our security team, manage complex timing for red carpet arrivals, and ensure every guest arrives on time. They're an essential part of making this event successful."
+                </p>
+                <div class="testimonial-author">Angela Martinez</div>
+                <div class="testimonial-role">Event Production Manager, NFL</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Working with Carey on NFL Honors is a pleasure because they understand the unique demands of Super Bowl week. They manage last-minute changes gracefully, coordinate with multiple hotels across the city, and maintain perfect on-time performance despite the chaos of Super Bowl weekend. Their consistency over 13 years speaks volumes about their capabilities."
+                </p>
+                <div class="testimonial-author">Robert Chen</div>
+                <div class="testimonial-role">Logistics Coordinator</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
+            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
+            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

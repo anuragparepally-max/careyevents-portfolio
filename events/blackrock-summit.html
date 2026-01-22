@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackRock Annual Summit | Carey International</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --carey-blue: #003B5C;
+            --carey-light-blue: #0A5279;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #4A4A4A;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        .header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--carey-blue);
+            letter-spacing: 2px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--carey-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover { color: var(--carey-light-blue); gap: 0.8rem; }
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
+                        url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-content { max-width: 900px; padding: 2rem; }
+        .event-category-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--carey-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero-subtitle { font-size: 1.5rem; opacity: 0.95; }
+        .stats-section {
+            background: var(--carey-blue);
+            padding: 4rem 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .stat-box:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
+        .stat-number { font-size: 3.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1.1rem; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+        .content-section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .section-text { font-size: 1.2rem; line-height: 1.9; color: var(--dark-gray); margin-bottom: 2rem; }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-image:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); }
+        .testimonials-section {
+            background: var(--carey-blue);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+        .testimonials-container { max-width: 1200px; margin: 0 auto; }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--white);
+        }
+        .testimonial-text { font-size: 1.3rem; line-height: 1.9; font-style: italic; margin-bottom: 2rem; }
+        .testimonial-author { font-size: 1.2rem; font-weight: 700; }
+        .testimonial-role { font-size: 1rem; opacity: 0.9; }
+        .footer { background: var(--carey-blue); padding: 3rem 2rem; text-align: center; color: var(--white); }
+        .footer-text { margin-bottom: 0.5rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-text">CAREY INTERNATIONAL</div>
+            <a href="../index.html" class="back-button">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="event-category-badge">Corporate</div>
+            <h1>BlackRock Annual Summit</h1>
+            <p class="hero-subtitle">Elite Transportation for Global Asset Management Leaders</p>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">150</div>
+                <div class="stat-label">Vehicles Deployed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">500</div>
+                <div class="stat-label">Executives Served</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Annual</div>
+                <div class="stat-label">Summit</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">On-Time Performance</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Event Overview</h2>
+        <p class="section-text">
+            BlackRock's Annual Summit brings together 500 senior executives from the world's largest asset management firm for strategic discussions and leadership alignment. Carey International provides comprehensive ground transportation for this premier event, deploying 150 vehicles to serve BlackRock's global leadership team, portfolio managers, and senior stakeholders throughout the multi-day summit.
+        </p>
+        <p class="section-text">
+            The summit demands precision logistics to coordinate executives arriving from international offices, manage complex scheduling across multiple venues, and provide seamless transportation for formal sessions, breakout meetings, and networking events. Our team works closely with BlackRock's event coordinators to ensure flawless execution, accommodating last-minute schedule changes and maintaining the executive-level service expected by leaders managing trillions in global assets.
+        </p>
+        <p class="section-text">
+            Carey's reputation for excellence in the financial services sector makes us the natural choice for BlackRock's most important annual gathering. Our professional chauffeurs understand the critical importance of confidentiality and discretion when transporting senior financial executives, and our premium fleet reflects BlackRock's commitment to quality. Perfect on-time performance throughout the summit ensures that strategic sessions proceed as planned, allowing executives to maximize the value of this crucial annual event.
+        </p>
+
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&q=80" alt="Corporate summit" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80" alt="Financial executives" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?w=800&q=80" alt="Business conference" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80" alt="Executive meeting" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Luxury vehicles" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80" alt="Corporate event" class="gallery-image">
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: white;">Client Testimonials</h2>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "BlackRock's Annual Summit requires transportation logistics that match our operational excellence standards. Carey International delivers exactly that. Managing 500 executives across multiple venues with zero margin for error demands exceptional coordination, and their team executes flawlessly year after year. The quality of their service reflects the professionalism we expect at BlackRock."
+                </p>
+                <div class="testimonial-author">Catherine Williams</div>
+                <div class="testimonial-role">Managing Director, BlackRock</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Carey's understanding of the financial services industry and commitment to confidentiality makes them the ideal partner for our annual summit. Their drivers are professional and discreet, their vehicles are immaculate, and their coordination is seamless. They handle the complexity of international arrivals and tight schedules with apparent ease, allowing our executives to focus on strategic priorities."
+                </p>
+                <div class="testimonial-author">James Peterson</div>
+                <div class="testimonial-role">Global Head of Events, BlackRock</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Perfect on-time performance is not optional for BlackRock events—it's essential. Carey consistently delivers that reliability along with premium service that matches our brand standards. Their ability to manage last-minute changes while maintaining flawless execution demonstrates the operational excellence that makes them our trusted transportation partner."
+                </p>
+                <div class="testimonial-author">Michael Zhang</div>
+                <div class="testimonial-role">Senior Vice President, BlackRock</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
+            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
+            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

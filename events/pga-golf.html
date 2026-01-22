@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGA Golf Tournament | Carey International</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --carey-blue: #003B5C;
+            --carey-light-blue: #0A5279;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #4A4A4A;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        .header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--carey-blue);
+            letter-spacing: 2px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--carey-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover { color: var(--carey-light-blue); gap: 0.8rem; }
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
+                        url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-content { max-width: 900px; padding: 2rem; }
+        .event-category-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--carey-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero-subtitle { font-size: 1.5rem; opacity: 0.95; }
+        .stats-section {
+            background: var(--carey-blue);
+            padding: 4rem 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .stat-box:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
+        .stat-number { font-size: 3.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1.1rem; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+        .content-section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .section-text { font-size: 1.2rem; line-height: 1.9; color: var(--dark-gray); margin-bottom: 2rem; }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-image:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); }
+        .testimonials-section {
+            background: var(--carey-blue);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+        .testimonials-container { max-width: 1200px; margin: 0 auto; }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--white);
+        }
+        .testimonial-text { font-size: 1.3rem; line-height: 1.9; font-style: italic; margin-bottom: 2rem; }
+        .testimonial-author { font-size: 1.2rem; font-weight: 700; }
+        .testimonial-role { font-size: 1rem; opacity: 0.9; }
+        .footer { background: var(--carey-blue); padding: 3rem 2rem; text-align: center; color: var(--white); }
+        .footer-text { margin-bottom: 0.5rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-text">CAREY INTERNATIONAL</div>
+            <a href="../index.html" class="back-button">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="event-category-badge">Sports</div>
+            <h1>PGA Golf Tournament</h1>
+            <p class="hero-subtitle">Precision Transportation for Golf's Elite</p>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">300</div>
+                <div class="stat-label">Vehicles Deployed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1,500</div>
+                <div class="stat-label">People Served</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Tournament Days</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">On-Time Performance</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Event Overview</h2>
+        <p class="section-text">
+            PGA Tour events demand the same precision and excellence that define professional golf. Carey International provided comprehensive ground transportation for tournament week, deploying 300 vehicles to serve 1,500 participants including touring professionals, caddies, PGA officials, sponsors, media, and VIP guests across multiple tournament venues and practice facilities.
+        </p>
+        <p class="section-text">
+            Throughout the tournament week, our fleet managed complex logistics including early morning practice round transfers, pro-am event shuttles, tournament day transportation, and sponsor hospitality coordination. Working closely with PGA Tour operations staff, we ensured seamless movement between hotels, golf courses, driving ranges, and evening events while maintaining the quiet professionalism and discretion expected in the world of professional golf.
+        </p>
+        <p class="section-text">
+            Our experienced team understands the unique demands of golf tournaments: tight morning tee times, precise timing for player arrivals, sponsor expectations, and the need for quiet, comfortable transportation that allows players to focus on their game. Perfect on-time performance throughout tournament week ensured that every participant arrived refreshed and ready to compete at the highest level.
+        </p>
+
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&q=80" alt="Golf course" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=80" alt="PGA tournament" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1596727147705-61a532a659bd?w=800&q=80" alt="Golf tournament venue" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1592919505780-303950717480?w=800&q=80" alt="Professional golf" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Luxury vehicles" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&q=80" alt="Golf clubhouse" class="gallery-image">
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: white;">Client Testimonials</h2>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Golf tournaments have unique transportation demands, and Carey International understands them perfectly. They managed 300 vehicles throughout tournament week with precision timing that matched our players' schedules. Their drivers were professional, quiet, and respectful of our players' pre-round routines. The quality of service was exceptional from start to finish."
+                </p>
+                <div class="testimonial-author">Thomas Bradley</div>
+                <div class="testimonial-role">PGA Tour Operations Manager</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Carey's team demonstrated exceptional coordination throughout the week, managing early morning tee times, sponsor events, and evening functions seamlessly. Their attention to detail and commitment to on-time performance ensured our tournament ran smoothly. They're the kind of transportation partner that makes our job easier, not harder."
+                </p>
+                <div class="testimonial-author">Jennifer Walsh</div>
+                <div class="testimonial-role">Tournament Director</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
+            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
+            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

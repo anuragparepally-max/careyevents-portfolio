@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle OpenWorld San Francisco | Carey International</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --carey-blue: #003B5C;
+            --carey-light-blue: #0A5279;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #4A4A4A;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        .header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--carey-blue);
+            letter-spacing: 2px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--carey-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .back-button:hover { color: var(--carey-light-blue); gap: 0.8rem; }
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
+                        url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-content { max-width: 900px; padding: 2rem; }
+        .event-category-badge {
+            display: inline-block;
+            background: var(--white);
+            color: var(--carey-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero-subtitle { font-size: 1.5rem; opacity: 0.95; }
+        .stats-section {
+            background: var(--carey-blue);
+            padding: 4rem 2rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .stat-box:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
+        .stat-number { font-size: 3.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1.1rem; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
+        .content-section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--carey-blue);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .section-text { font-size: 1.2rem; line-height: 1.9; color: var(--dark-gray); margin-bottom: 2rem; }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-image:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); }
+        .testimonials-section {
+            background: var(--carey-blue);
+            padding: 6rem 2rem;
+            color: var(--white);
+        }
+        .testimonials-container { max-width: 1200px; margin: 0 auto; }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--white);
+        }
+        .testimonial-text { font-size: 1.3rem; line-height: 1.9; font-style: italic; margin-bottom: 2rem; }
+        .testimonial-author { font-size: 1.2rem; font-weight: 700; }
+        .testimonial-role { font-size: 1rem; opacity: 0.9; }
+        .footer { background: var(--carey-blue); padding: 3rem 2rem; text-align: center; color: var(--white); }
+        .footer-text { margin-bottom: 0.5rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-text">CAREY INTERNATIONAL</div>
+            <a href="../index.html" class="back-button">← Back to Portfolio</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="event-category-badge">Technology</div>
+            <h1>Oracle OpenWorld</h1>
+            <p class="hero-subtitle">Enterprise-Scale Transportation for Cloud Computing Leaders</p>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">300</div>
+                <div class="stat-label">Vehicles Deployed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1,500</div>
+                <div class="stat-label">Attendees Served</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">San Francisco</div>
+                <div class="stat-label">Location</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">On-Time Performance</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Event Overview</h2>
+        <p class="section-text">
+            Oracle OpenWorld in San Francisco stands as one of the world's largest enterprise technology conferences, bringing together 1,500 IT executives, developers, database administrators, and cloud computing professionals. Carey International provided comprehensive ground transportation for this massive event, deploying 300 vehicles throughout the week-long conference to serve Oracle customers, partners, and technology leaders from around the globe.
+        </p>
+        <p class="section-text">
+            The conference demanded exceptional coordination to manage transportation across multiple downtown San Francisco venues, with attendees navigating between keynote presentations, technical sessions, hands-on labs, and customer appreciation events. Our team worked closely with Oracle's event coordinators to ensure seamless movement for CIOs, CTOs, and IT directors attending this flagship technology gathering. With sessions running from morning through evening events at venues across the city, reliable transportation was essential for maximizing the value of this important annual conference.
+        </p>
+        <p class="section-text">
+            Carey's proven expertise in large-scale technology events and deep knowledge of San Francisco logistics made us the ideal transportation partner for Oracle OpenWorld. Our professional chauffeurs understand the enterprise technology sector and provide the discretion required when transporting executives discussing strategic IT initiatives. Perfect on-time performance throughout the conference ensured attendees could focus on learning about cloud innovations, networking with peers, and maximizing their OpenWorld experience.
+        </p>
+
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" alt="San Francisco waterfront" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Tech conference" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Enterprise technology" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80" alt="Conference keynote" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Luxury vehicles" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Cloud computing" class="gallery-image">
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: white;">Client Testimonials</h2>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Oracle OpenWorld is our most important customer event, bringing together IT leaders from around the world. Carey International's transportation service ensured seamless movement across San Francisco despite the complexity of multiple venues and tight schedules. Their coordination with our event team was exceptional, and their commitment to on-time performance allowed our attendees to maximize their conference experience."
+                </p>
+                <div class="testimonial-author">Thomas Bradley</div>
+                <div class="testimonial-role">VP of Global Events, Oracle</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Managing ground transportation for 1,500 technology executives across a week-long conference requires operational excellence at scale. Carey delivered flawlessly, coordinating 300 vehicles with precision timing throughout OpenWorld. Their professional chauffeurs and premium fleet reflected the quality standards our customers expect from Oracle. They're the transportation partner we trust for our flagship event."
+                </p>
+                <div class="testimonial-author">Jennifer Martinez</div>
+                <div class="testimonial-role">Senior Director of Customer Experience, Oracle</div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Carey's knowledge of San Francisco and experience with large-scale technology events made them the perfect partner for OpenWorld. They handled last-minute changes gracefully, coordinated with our security team seamlessly, and maintained perfect on-time performance despite challenging city logistics. Their service quality enhanced the overall OpenWorld experience for our customers and partners."
+                </p>
+                <div class="testimonial-author">David Chen</div>
+                <div class="testimonial-role">Event Operations Manager, Oracle</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
+            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
+            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
