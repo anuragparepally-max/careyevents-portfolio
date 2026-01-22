@@ -352,17 +352,23 @@
         }
 
         .testimonials-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
         .testimonial-card {
             background: rgba(255, 255, 255, 0.98);
-            padding: 3.5rem;
+            padding: 3rem;
             border-radius: 24px;
-            margin-bottom: 2rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             position: relative;
@@ -677,6 +683,7 @@
         <div class="testimonials-container">
             <h2 class="section-title" style="color: white;">What Our Clients Said</h2>
 
+            <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-rating">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -692,8 +699,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="testimonial-card">
+<div class="testimonial-card">
                 <div class="testimonial-rating">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
@@ -708,8 +714,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="testimonial-card">
+<div class="testimonial-card">
                 <div class="testimonial-rating">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
@@ -723,6 +728,7 @@
                         <div class="testimonial-role">Head of Security & Logistics</div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
