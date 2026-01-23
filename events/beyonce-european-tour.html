@@ -374,16 +374,45 @@
         .testimonial-text {
             font-size: 1.15rem;
             line-height: 1.8;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             color: var(--dark-gray);
             position: relative;
             z-index: 1;
             font-weight: 400;
             flex: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 7;
-            -webkit-box-orient: vertical;
+            max-height: 12.6rem;
             overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .testimonial-text.expanded {
+            max-height: 100rem;
+        }
+
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--carey-blue);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .read-more-btn:hover {
+            color: var(--carey-light-blue);
+            gap: 0.5rem;
+        }
+
+        .read-more-btn:focus {
+            outline: 2px solid var(--carey-blue);
+            outline-offset: 2px;
         }
 
         .testimonial-footer {
@@ -450,9 +479,22 @@
             }
 
             .testimonial-text {
-                -webkit-line-clamp: unset;
-                display: block;
-            }
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+            flex: 1;
+            max-height: 12.6rem;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .testimonial-text.expanded {
+            max-height: 100rem;
+        }
         }
         @media (max-width: 768px) {
             .hero h1 {
@@ -642,5 +684,44 @@
         </div>
     </footer>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add Read more buttons to testimonials
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+            testimonialCards.forEach(card => {
+                const textElement = card.querySelector('.testimonial-text');
+                const footer = card.querySelector('.testimonial-footer');
+
+                // Check if text is overflowing
+                if (textElement.scrollHeight > textElement.clientHeight + 5) {
+                    // Create read more button
+                    const readMoreBtn = document.createElement('button');
+                    readMoreBtn.className = 'read-more-btn';
+                    readMoreBtn.innerHTML = 'Read more →';
+                    readMoreBtn.setAttribute('aria-expanded', 'false');
+
+                    // Insert before footer
+                    footer.parentNode.insertBefore(readMoreBtn, footer);
+
+                    // Add click handler
+                    readMoreBtn.addEventListener('click', function() {
+                        const isExpanded = textElement.classList.contains('expanded');
+
+                        if (isExpanded) {
+                            textElement.classList.remove('expanded');
+                            readMoreBtn.innerHTML = 'Read more →';
+                            readMoreBtn.setAttribute('aria-expanded', 'false');
+                        } else {
+                            textElement.classList.add('expanded');
+                            readMoreBtn.innerHTML = '← Show less';
+                            readMoreBtn.setAttribute('aria-expanded', 'true');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
