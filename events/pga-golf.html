@@ -124,198 +124,14 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         .gallery-image:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); }
-                .testimonials-section {
-            background: linear-gradient(135deg, #003B5C 0%, #0A5279 100%);
-            padding: 6rem 2rem;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonials-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .testimonials-section::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .testimonials-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 3rem;
-            border-radius: 24px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 6rem;
-            font-family: Georgia, serif;
-            color: var(--carey-blue);
-            opacity: 0.15;
-            line-height: 1;
-            font-weight: 700;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 1);
-            border-color: var(--carey-blue);
-        }
-
-        .testimonial-rating {
-            display: flex;
-            gap: 0.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .testimonial-rating span {
-            color: #FFB800;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-            position: relative;
-            z-index: 1;
-            font-weight: 400;
-            flex: 1;
-            max-height: 12.6rem;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-
-        .testimonial-text.expanded {
-            max-height: 100rem;
-        }
-
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: var(--carey-blue);
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .read-more-btn:hover {
-            color: var(--carey-light-blue);
-            gap: 0.5rem;
-        }
-
-        .read-more-btn:focus {
-            outline: 2px solid var(--carey-blue);
-            outline-offset: 2px;
-        }
-
-        .testimonial-footer {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--light-gray);
-        }
-
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--carey-blue), var(--carey-light-blue));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            flex-shrink: 0;
-        }
-
-        .testimonial-info {
-            flex: 1;
-        }
-
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--carey-blue);
-            font-size: 1.15rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .testimonial-role {
-            color: var(--dark-gray);
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-        .footer { background: var(--carey-blue); padding: 3rem 2rem; text-align: center; color: var(--white); }
-        .footer-text { margin-bottom: 0.5rem; }
-
-
-        /* Responsive Testimonials - Desktop >= 1024px: 3 cols, Tablet 640-1023px: 2 cols, Mobile < 640px: 1 col */
-        @media (max-width: 1023px) {
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 639px) {
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+                
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .stats-container { grid-template-columns: 1fr; }
         }
     </style>
+    <link rel="stylesheet" href="../components/testimonials.css">
 </head>
 <body>
     <header class="header">
@@ -376,60 +192,9 @@
         </div>
     </section>
 
-    <section class="testimonials-section">
-        <div class="testimonials-container">
-            <h2 class="section-title" style="color: white;">Client Testimonials</h2>
+        <!-- CANONICAL TESTIMONIALS COMPONENT - DO NOT MODIFY -->
+    <div id="testimonials-root" data-testimonials="[{&quot;text&quot;: &quot;\&quot;Golf tournaments have unique transportation demands, and Carey International understands them perfectly. They managed 300 vehicles throughout tournament week with precision timing that matched our players' schedules. Their drivers were professional, quiet, and respectful of our players' pre-round routines. The quality of service was exceptional from start to finish.\&quot;&quot;, &quot;author&quot;: &quot;Thomas Bradley&quot;, &quot;role&quot;: &quot;PGA Tour Operations Manager&quot;}, {&quot;text&quot;: &quot;\&quot;Carey's team demonstrated exceptional coordination throughout the week, managing early morning tee times, sponsor events, and evening functions seamlessly. Their attention to detail and commitment to on-time performance ensured our tournament ran smoothly. They're the kind of transportation partner that makes our job easier, not harder.\&quot;&quot;, &quot;author&quot;: &quot;Jennifer Walsh&quot;, &quot;role&quot;: &quot;Tournament Director&quot;}, {&quot;text&quot;: &quot;\&quot;Golf tournaments require early morning precision and respect for players' routines. Carey's team demonstrated both throughout tournament week. Their drivers understood the unique demands of professional golf, maintained perfect timing, and delivered exceptional service that matched the premium nature of our event.\&quot;&quot;, &quot;author&quot;: &quot;Michael Chen&quot;, &quot;role&quot;: &quot;PGA Tournament Logistics Manager&quot;}]"></div>
 
-            <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-rating">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <p class="testimonial-text">
-                    "Golf tournaments have unique transportation demands, and Carey International understands them perfectly. They managed 300 vehicles throughout tournament week with precision timing that matched our players' schedules. Their drivers were professional, quiet, and respectful of our players' pre-round routines. The quality of service was exceptional from start to finish."
-                </p>
-                <div class="testimonial-footer">
-                    <div class="testimonial-avatar">TB</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-author">Thomas Bradley</div>
-                        <div class="testimonial-role">PGA Tour Operations Manager</div>
-                    </div>
-                </div>
-            </div>
-<div class="testimonial-card">
-                <div class="testimonial-rating">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <p class="testimonial-text">
-                    "Carey's team demonstrated exceptional coordination throughout the week, managing early morning tee times, sponsor events, and evening functions seamlessly. Their attention to detail and commitment to on-time performance ensured our tournament ran smoothly. They're the kind of transportation partner that makes our job easier, not harder."
-                </p>
-                <div class="testimonial-footer">
-                    <div class="testimonial-avatar">JW</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-author">Jennifer Walsh</div>
-                        <div class="testimonial-role">Tournament Director</div>
-                    </div>
-                </div>
-<div class="testimonial-card">
-                <div class="testimonial-rating">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <p class="testimonial-text">
-                    "Golf tournaments require early morning precision and respect for players' routines. Carey's team demonstrated both throughout tournament week. Their drivers understood the unique demands of professional golf, maintained perfect timing, and delivered exceptional service that matched the premium nature of our event."
-                </p>
-                <div class="testimonial-footer">
-                    <div class="testimonial-avatar">MC</div>
-                    <div class="testimonial-info">
-                        <div class="testimonial-author">Michael Chen</div>
-                        <div class="testimonial-role">PGA Tournament Logistics Manager</div>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-            </div>
-        </div>
-    </section>
 
     <footer class="footer">
         <div class="footer-content">
@@ -439,43 +204,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add Read more buttons to testimonials
-            const testimonialCards = document.querySelectorAll('.testimonial-card');
-
-            testimonialCards.forEach(card => {
-                const textElement = card.querySelector('.testimonial-text');
-                const footer = card.querySelector('.testimonial-footer');
-
-                // Check if text is overflowing
-                if (textElement.scrollHeight > textElement.clientHeight + 5) {
-                    // Create read more button
-                    const readMoreBtn = document.createElement('button');
-                    readMoreBtn.className = 'read-more-btn';
-                    readMoreBtn.innerHTML = 'Read more →';
-                    readMoreBtn.setAttribute('aria-expanded', 'false');
-
-                    // Insert before footer
-                    footer.parentNode.insertBefore(readMoreBtn, footer);
-
-                    // Add click handler
-                    readMoreBtn.addEventListener('click', function() {
-                        const isExpanded = textElement.classList.contains('expanded');
-
-                        if (isExpanded) {
-                            textElement.classList.remove('expanded');
-                            readMoreBtn.innerHTML = 'Read more →';
-                            readMoreBtn.setAttribute('aria-expanded', 'false');
-                        } else {
-                            textElement.classList.add('expanded');
-                            readMoreBtn.innerHTML = '← Show less';
-                            readMoreBtn.setAttribute('aria-expanded', 'true');
-                        }
-                    });
-                }
-            });
-        });
-    </script>
+    
+    <script src="../components/testimonials.js"></script>
 </body>
 </html>
