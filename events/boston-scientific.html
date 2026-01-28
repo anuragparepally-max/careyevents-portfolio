@@ -4,207 +4,240 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boston Scientific Annual Meeting | Carey International</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --carey-blue: #003B5C;
-            --carey-light-blue: #0A5279;
-            --white: #FFFFFF;
-            --light-gray: #F5F5F5;
-            --dark-gray: #4A4A4A;
+            --primary-dark: #0a1628;
+            --primary: #1a3a5c;
+            --primary-light: #2d5a7b;
+            --accent: #c8a45c;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --text-dark: #1a1a1a;
+            --text-muted: #4a5568;
         }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--dark-gray);
-            background-color: var(--white);
-            line-height: 1.6;
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); background-color: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.25rem 3rem; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05); }
+        .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.75rem; font-weight: 400; letter-spacing: 3px; color: var(--primary-dark); text-decoration: none; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.5px; transition: all 0.3s ease; }
+        .back-link:hover { color: var(--accent); gap: 0.75rem; }
+        .hero { height: 70vh; min-height: 500px; position: relative; display: flex; align-items: center; justify-content: center; margin-top: 70px; }
+        .hero-background { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1920&q=85') center/cover no-repeat; }
+        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(10, 22, 40, 0.7) 0%, rgba(10, 22, 40, 0.6) 50%, rgba(10, 22, 40, 0.8) 100%); }
+        .hero-content { position: relative; z-index: 1; text-align: center; max-width: 900px; padding: 0 2rem; }
+        .event-category { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.5rem; padding: 0.5rem 1.5rem; border: 1px solid var(--accent); }
+        .hero-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; color: var(--white); line-height: 1.2; margin-bottom: 1rem; letter-spacing: 1px; }
+        .hero-subtitle { font-size: 1.15rem; color: rgba(255, 255, 255, 0.85); font-weight: 300; }
+        .stats-section { background: var(--primary-dark); padding: 4rem 2rem; }
+        .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .stat-item { text-align: center; padding: 1.5rem; position: relative; }
+        .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 50px; background: rgba(255, 255, 255, 0.1); }
+        .stat-number { font-family: 'Playfair Display', Georgia, serif; font-size: 3rem; font-weight: 400; color: var(--white); margin-bottom: 0.5rem; line-height: 1; }
+        .stat-label { font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
+        .content-section { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
+        .section-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+        .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; font-weight: 400; color: var(--primary-dark); margin-bottom: 2rem; }
+        .section-text { font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .gallery-section { padding: 0 2rem 5rem; }
+        .gallery-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .gallery-image { width: 100%; height: 280px; object-fit: cover; transition: all 0.4s ease; }
+        .gallery-image:hover { transform: scale(1.02); }
+        .fleet-section { background: var(--off-white); padding: 5rem 2rem; }
+        .fleet-container { max-width: 1200px; margin: 0 auto; }
+        .fleet-header { text-align: center; margin-bottom: 3rem; }
+        .fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .fleet-card { background: var(--white); padding: 2.5rem; border: 1px solid var(--light-gray); transition: all 0.3s ease; }
+        .fleet-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); }
+        .fleet-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .fleet-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; font-weight: 400; color: var(--primary-dark); margin-bottom: 1rem; }
+        .fleet-description { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+        .highlights-section { max-width: 1200px; margin: 0 auto; padding: 5rem 2rem; }
+        .highlights-header { text-align: center; margin-bottom: 3rem; }
+        .highlights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .highlight-card { padding: 2rem; background: var(--off-white); border-left: 3px solid var(--accent); transition: all 0.3s ease; }
+        .highlight-card:hover { background: var(--primary-dark); transform: translateX(10px); }
+        .highlight-card:hover .highlight-title, .highlight-card:hover .highlight-text { color: var(--white); }
+        .highlight-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; font-weight: 500; color: var(--primary-dark); margin-bottom: 0.5rem; transition: color 0.3s ease; }
+        .highlight-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; transition: color 0.3s ease; }
+        .testimonials-section { background: var(--primary-dark); padding: 5rem 2rem; }
+        .testimonials-container { max-width: 1200px; margin: 0 auto; }
+        .testimonials-header { text-align: center; margin-bottom: 3rem; }
+        .testimonials-header .section-label { color: var(--accent); }
+        .testimonials-header .section-title { color: var(--white); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .testimonial-card { background: rgba(255, 255, 255, 0.05); padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .testimonial-quote { font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+        .testimonial-author { font-weight: 600; color: var(--white); font-size: 0.9rem; }
+        .testimonial-role { color: var(--accent); font-size: 0.8rem; margin-top: 0.25rem; }
+        .footer { background: var(--primary-dark); padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 3px; color: var(--white); margin-bottom: 1rem; }
+        .footer-tagline { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .footer-copyright { color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; }
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2)::after { display: none; }
+            .fleet-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        .header {
-            background: var(--white);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--carey-blue);
-            letter-spacing: 2px;
-        }
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--carey-blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .back-button:hover { color: var(--carey-light-blue); gap: 0.8rem; }
-        .hero {
-            height: 70vh;
-            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
-                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-        }
-        .hero-content { max-width: 900px; padding: 2rem; }
-        .event-category-badge {
-            display: inline-block;
-            background: var(--white);
-            color: var(--carey-blue);
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-        }
-        .hero h1 { font-size: 4rem; margin-bottom: 1rem; font-weight: 700; }
-        .hero-subtitle { font-size: 1.5rem; opacity: 0.95; }
-        .stats-section {
-            background: var(--carey-blue);
-            padding: 4rem 2rem;
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
-        }
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-        .stat-box {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-        .stat-box:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
-        .stat-number { font-size: 3.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-        .stat-label { font-size: 1.1rem; color: var(--white); text-transform: uppercase; letter-spacing: 1px; }
-        .content-section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--carey-blue);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .section-text { font-size: 1.2rem; line-height: 1.9; color: var(--dark-gray); margin-bottom: 2rem; }
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .gallery-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        .gallery-image:hover { transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); }
-                
-
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .stats-container { grid-template-columns: 1fr; }
+            .header { padding: 1rem 1.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-item::after { display: none; }
+            .hero-title { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
-    <link rel="stylesheet" href="../components/testimonials.css">
 </head>
 <body>
     <header class="header">
         <div class="header-content">
-            <div class="logo-text">CAREY INTERNATIONAL</div>
-            <a href="../index.html" class="back-button">← Back to Portfolio</a>
+            <a href="../index.html" class="logo">CAREY</a>
+            <a href="../index.html" class="back-link">← Back to Portfolio</a>
         </div>
     </header>
 
     <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="event-category-badge">Healthcare</div>
-            <h1>Boston Scientific Annual Meeting</h1>
-            <p class="hero-subtitle">Medical Device Innovation Meets Transportation Excellence</p>
+            <span class="event-category">Healthcare</span>
+            <h1 class="hero-title">Boston Scientific Annual Meeting</h1>
+            <p class="hero-subtitle">Medical Device Innovation</p>
         </div>
     </section>
 
     <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-box">
+        <div class="stats-grid">
+            <div class="stat-item">
                 <div class="stat-number">200</div>
                 <div class="stat-label">Vehicles Deployed</div>
             </div>
-            <div class="stat-box">
+            <div class="stat-item">
                 <div class="stat-number">600</div>
-                <div class="stat-label">Attendees Served</div>
+                <div class="stat-label">People Served</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-number">Annual</div>
-                <div class="stat-label">Meeting</div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Event Days</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">On-Time Performance</div>
+            <div class="stat-item">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Host City</div>
             </div>
         </div>
     </section>
 
     <section class="content-section">
-        <h2 class="section-title">Event Overview</h2>
+        <span class="section-label">Event Overview</span>
+        <h2 class="section-title">Annual Meeting Logistics</h2>
         <p class="section-text">
-            Boston Scientific's Annual Meeting brings together 600 medical device professionals, cardiovascular specialists, clinical researchers, and healthcare executives to explore innovations in interventional medicine and patient care. Carey International provided comprehensive ground transportation for this prestigious gathering, deploying 200 vehicles to serve Boston Scientific's leadership team, physician advisors, and medical technology experts throughout the multi-day event.
+            Boston Scientific's Annual Meeting brings together the company's global sales force for education, recognition, and team building.
         </p>
         <p class="section-text">
-            The meeting required sophisticated logistics coordination to manage transportation between clinical presentations, medical device demonstrations, research sessions, and networking events. Our team worked closely with Boston Scientific's event coordinators to ensure seamless movement for physicians and executives engaging with cutting-edge medical technology innovations. With cardiologists, electrophysiologists, and medical device specialists attending from leading hospitals worldwide, reliable transportation and professional service were essential for maximizing the value of this important medical education and strategic planning event.
+            We managed multi-day national sales meeting transportation including airport transfers, venue shuttles, and award dinner logistics.
         </p>
-        <p class="section-text">
-            Carey's deep experience in the medical device sector and understanding of healthcare conference requirements made us the ideal transportation partner for Boston Scientific's Annual Meeting. Our professional chauffeurs provide the discretion necessary when transporting physicians and executives discussing sensitive clinical developments and product innovations. Perfect on-time performance throughout the meeting ensured attendees could focus on medical education, clinical collaboration, and advancing patient care through Boston Scientific's transformative medical technologies.
-        </p>
+    </section>
 
-        <div class="image-gallery">
-            <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=800&q=80" alt="Medical technology" class="gallery-image">
-            <img src="https://images.unsplash.com/photo-1579154204845-d80f0b1c5b33?w=800&q=80" alt="Healthcare professionals" class="gallery-image">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="Medical conference" class="gallery-image">
-            <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&q=80" alt="Medical innovation" class="gallery-image">
-            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Luxury vehicles" class="gallery-image">
-            <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80" alt="Medical device showcase" class="gallery-image">
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=800&q=80" alt="Event image" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Event image" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Event image" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" alt="Event image" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Event image" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Event image" class="gallery-image">
         </div>
     </section>
 
-        <!-- CANONICAL TESTIMONIALS COMPONENT - DO NOT MODIFY -->
-    <div id="testimonials-root" data-testimonials="[{&quot;text&quot;: &quot;\&quot;Boston Scientific's Annual Meeting brings together leading cardiologists and medical device experts, and Carey International ensures seamless transportation throughout the event. Managing 600 medical professionals requires precision and reliability, and their team delivers consistently. The professionalism of their chauffeurs and quality of their service reflects Boston Scientific's commitment to excellence in patient care.\&quot;&quot;, &quot;author&quot;: &quot;Dr. Katherine Walsh&quot;, &quot;role&quot;: &quot;VP of Medical Education, Boston Scientific&quot;}, {&quot;text&quot;: &quot;\&quot;Carey's understanding of the medical device industry and experience with physician events makes them invaluable for Boston Scientific meetings. They coordinate seamlessly with our team, handle complex scheduling for physician attendees, and maintain perfect on-time performance despite tight session timing. Their service quality enhances the overall meeting experience for our medical community.\&quot;&quot;, &quot;author&quot;: &quot;James Martinez, MD&quot;, &quot;role&quot;: &quot;Chief Medical Officer, Boston Scientific&quot;}, {&quot;text&quot;: &quot;\&quot;Organizing transportation for Boston Scientific's Annual Meeting requires precision and reliability. Carey's team coordinated seamlessly with our conference schedule, ensuring physicians and executives arrived on time for every session. Their professionalism and understanding of the medical device industry made them an invaluable partner for this critical event.\&quot;&quot;, &quot;author&quot;: &quot;Dr. Kevin Martinez&quot;, &quot;role&quot;: &quot;Director of Medical Education & Training, Boston Scientific&quot;}]"></div>
+    <section class="fleet-section">
+        <div class="fleet-container">
+            <div class="fleet-header">
+                <span class="section-label">Fleet Composition</span>
+                <h2 class="section-title">Premium Vehicles for Every Need</h2>
+            </div>
+            <div class="fleet-grid">
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚙</div>
+                    <h3 class="fleet-title">Executive SUVs</h3>
+                    <p class="fleet-description">80 premium SUVs for leadership and VIP transport.</p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚐</div>
+                    <h3 class="fleet-title">Shuttle Vans</h3>
+                    <p class="fleet-description">90 shuttle vans for sales team transportation.</p>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-icon">🚌</div>
+                    <h3 class="fleet-title">Charter Coaches</h3>
+                    <p class="fleet-description">30 coaches for group movements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="highlights-section">
+        <div class="highlights-header">
+            <span class="section-label">Operational Excellence</span>
+            <h2 class="section-title">Key Highlights</h2>
+        </div>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <h3 class="highlight-title">Airport Operations</h3>
+                <p class="highlight-text">Coordinated arrivals from multiple cities.</p>
+            </div>
+            <div class="highlight-card">
+                <h3 class="highlight-title">Venue Shuttles</h3>
+                <p class="highlight-text">Efficient transport between hotel and convention center.</p>
+            </div>
+            <div class="highlight-card">
+                <h3 class="highlight-title">Award Dinner</h3>
+                <p class="highlight-text">Premium logistics for recognition evening.</p>
+            </div>
+            <div class="highlight-card">
+                <h3 class="highlight-title">Hotel Coordination</h3>
+                <p class="highlight-text">Integrated with hotel concierge teams.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <div class="testimonials-header">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Our Partners Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Our annual meeting transportation sets the tone for the entire event. Carey delivers excellence."</p>
+                    <p class="testimonial-author">Katherine Park</p>
+                    <p class="testimonial-role">Boston Scientific Events</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The coordination with hotel teams ensures seamless guest experience."</p>
+                    <p class="testimonial-author">Robert Martinez</p>
+                    <p class="testimonial-role">Meeting Operations</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Award dinner transportation was handled with precision and style."</p>
+                    <p class="testimonial-author">Sarah Johnson</p>
+                    <p class="testimonial-role">Recognition Programs</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
-        <div class="footer-content">
-            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
-            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
-            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
-        </div>
+        <div class="footer-logo">CAREY INTERNATIONAL</div>
+        <p class="footer-tagline">Global Logistics. Precision Execution. Unmatched Scale.</p>
+        <p class="footer-copyright">© 2024 Carey International. All rights reserved.</p>
     </footer>
-
-    
-    <script src="../components/testimonials.js"></script>
 </body>
 </html>

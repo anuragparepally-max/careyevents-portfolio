@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beyoncé European Tour | Carey International</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,12 +15,16 @@
         }
 
         :root {
-            --carey-blue: #003B5C;
-            --carey-light-blue: #0A5279;
-            --white: #FFFFFF;
-            --light-gray: #F5F5F5;
-            --medium-gray: #E0E0E0;
-            --dark-gray: #4A4A4A;
+            --primary-dark: #0a1628;
+            --primary: #1a3a5c;
+            --primary-light: #2d5a7b;
+            --accent: #c8a45c;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --text-dark: #1a1a1a;
+            --text-muted: #4a5568;
         }
 
         html {
@@ -25,19 +32,24 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--dark-gray);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
             background-color: var(--white);
-            line-height: 1.6;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Header */
         .header {
-            background: var(--white);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
+            padding: 1.25rem 3rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
         }
 
         .header-content {
@@ -48,157 +60,209 @@
             align-items: center;
         }
 
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--carey-blue);
-            letter-spacing: 2px;
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--primary-dark);
+            text-decoration: none;
         }
 
-        .back-button {
+        .back-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--carey-blue);
+            color: var(--primary);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
 
-        .back-button:hover {
-            color: var(--carey-light-blue);
-            gap: 0.8rem;
+        .back-link:hover {
+            color: var(--accent);
+            gap: 0.75rem;
         }
 
+        /* Hero Section */
         .hero {
             height: 70vh;
-            background: linear-gradient(rgba(0, 59, 92, 0.8), rgba(10, 82, 121, 0.8)),
-                        url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1600&q=80') center/cover;
+            min-height: 500px;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: var(--white);
+            margin-top: 70px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1920&q=85') center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 22, 40, 0.7) 0%,
+                rgba(10, 22, 40, 0.6) 50%,
+                rgba(10, 22, 40, 0.8) 100%
+            );
         }
 
         .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
             max-width: 900px;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
-        .event-category-badge {
+        .event-category {
             display: inline-block;
-            background: var(--white);
-            color: var(--carey-blue);
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--accent);
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        .hero-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.2;
             margin-bottom: 1rem;
-            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
-            opacity: 0.95;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
         }
 
+        /* Stats Section */
         .stats-section {
-            background: var(--carey-blue);
+            background: var(--primary-dark);
             padding: 4rem 2rem;
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
         }
 
-        .stats-container {
-            max-width: 1400px;
+        .stats-grid {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
         }
 
-        .stat-box {
+        .stat-item {
             text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            position: relative;
         }
 
-        .stat-box:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .stat-number {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 400;
             color: var(--white);
             margin-bottom: 0.5rem;
+            line-height: 1;
         }
 
         .stat-label {
-            font-size: 1.1rem;
-            color: var(--white);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-weight: 500;
         }
 
+        /* Content Section */
         .content-section {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
         .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
             font-size: 2.5rem;
-            color: var(--carey-blue);
+            font-weight: 400;
+            color: var(--primary-dark);
             margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .section-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.9;
-            color: var(--dark-gray);
-            margin-bottom: 2rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
         }
 
-        .image-gallery {
+        /* Image Gallery */
+        .gallery-section {
+            padding: 0 2rem 5rem;
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .gallery-image {
             width: 100%;
-            height: 300px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 15px;
             transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .gallery-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
         }
 
+        /* Fleet Section */
         .fleet-section {
-            background: var(--light-gray);
+            background: var(--off-white);
             padding: 5rem 2rem;
-            margin: 4rem 0;
         }
 
         .fleet-container {
@@ -206,127 +270,259 @@
             margin: 0 auto;
         }
 
+        .fleet-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
         .fleet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
         .fleet-card {
             background: var(--white);
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--light-gray);
             transition: all 0.3s ease;
         }
 
         .fleet-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
         .fleet-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
         .fleet-title {
-            font-size: 1.5rem;
-            color: var(--carey-blue);
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--primary-dark);
             margin-bottom: 1rem;
-            font-weight: 700;
         }
 
         .fleet-description {
-            font-size: 1.1rem;
-            color: var(--dark-gray);
+            font-size: 0.95rem;
+            color: var(--text-muted);
             line-height: 1.7;
         }
 
+        /* Highlights Section */
         .highlights-section {
             max-width: 1200px;
-            margin: 6rem auto;
-            padding: 0 2rem;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .highlights-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
         .highlights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
-        .highlight-box {
+        .highlight-card {
             padding: 2rem;
-            background: var(--light-gray);
-            border-radius: 15px;
-            border-left: 5px solid var(--carey-blue);
+            background: var(--off-white);
+            border-left: 3px solid var(--accent);
             transition: all 0.3s ease;
         }
 
-        .highlight-box:hover {
-            background: var(--carey-blue);
-            color: var(--white);
+        .highlight-card:hover {
+            background: var(--primary-dark);
             transform: translateX(10px);
         }
 
+        .highlight-card:hover .highlight-title,
+        .highlight-card:hover .highlight-text {
+            color: var(--white);
+        }
+
         .highlight-title {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary-dark);
             margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
         }
 
         .highlight-text {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
             line-height: 1.7;
+            transition: color 0.3s ease;
         }
 
-                
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--primary-dark);
+            padding: 5rem 2rem;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-header .section-label {
+            color: var(--accent);
+        }
+
+        .testimonials-header .section-title {
+            color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-quote {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-role {
+            color: var(--accent);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+            .fleet-grid {
+                grid-template-columns: 1fr;
+            }
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .header {
+                padding: 1rem 1.5rem;
             }
-            .stats-container {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .stat-item::after {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
-    <link rel="stylesheet" href="../components/testimonials.css">
 </head>
 <body>
 
     <header class="header">
         <div class="header-content">
-            <div class="logo-text">CAREY INTERNATIONAL</div>
-            <a href="../index.html" class="back-button">← Back to Portfolio</a>
+            <a href="../index.html" class="logo">CAREY</a>
+            <a href="../index.html" class="back-link">← Back to Portfolio</a>
         </div>
     </header>
 
     <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="event-category-badge">Music & Entertainment</div>
-            <h1>Beyoncé European Tour</h1>
+            <span class="event-category">Music & Entertainment</span>
+            <h1 class="hero-title">Beyoncé European Tour</h1>
             <p class="hero-subtitle">The Largest Tour Transportation Deployment in Company History</p>
         </div>
     </section>
 
     <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-box">
+        <div class="stats-grid">
+            <div class="stat-item">
                 <div class="stat-number">800</div>
                 <div class="stat-label">Vehicles Deployed</div>
             </div>
-            <div class="stat-box">
+            <div class="stat-item">
                 <div class="stat-number">2,500</div>
                 <div class="stat-label">People Served</div>
             </div>
-            <div class="stat-box">
+            <div class="stat-item">
                 <div class="stat-number">52</div>
                 <div class="stat-label">Tour Dates</div>
             </div>
-            <div class="stat-box">
+            <div class="stat-item">
                 <div class="stat-number">18</div>
                 <div class="stat-label">European Countries</div>
             </div>
@@ -334,15 +530,18 @@
     </section>
 
     <section class="content-section">
-        <h2 class="section-title">Event Overview</h2>
+        <span class="section-label">Event Overview</span>
+        <h2 class="section-title">Redefining Global Tour Logistics</h2>
         <p class="section-text">
             Beyoncé's European tour represented the single largest ground transportation deployment in Carey International's history. Spanning 18 countries, 52 tour dates, and 800 meticulously coordinated vehicles, this operation redefined what's possible in international touring logistics.
         </p>
         <p class="section-text">
             From stadiums in London to arenas in Barcelona, concert halls in Paris to festival grounds in Amsterdam, our team orchestrated seamless transportation for performers, crew, production staff, and VIP guests. The complexity was staggering: managing cross-border regulations, coordinating with local vendors in multiple languages, and ensuring every person arrived on time, every time—all while maintaining the discretion and luxury expected by one of the world's biggest stars.
         </p>
+    </section>
 
-        <div class="image-gallery">
+    <section class="gallery-section">
+        <div class="gallery-grid">
             <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80" alt="Concert stage" class="gallery-image">
             <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80" alt="Concert lights" class="gallery-image">
             <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80" alt="Stage performance" class="gallery-image">
@@ -354,7 +553,10 @@
 
     <section class="fleet-section">
         <div class="fleet-container">
-            <h2 class="section-title">Fleet Composition</h2>
+            <div class="fleet-header">
+                <span class="section-label">Fleet Composition</span>
+                <h2 class="section-title">Premium Vehicles for Every Need</h2>
+            </div>
             <div class="fleet-grid">
                 <div class="fleet-card">
                     <div class="fleet-icon">🚙</div>
@@ -382,27 +584,30 @@
     </section>
 
     <section class="highlights-section">
-        <h2 class="section-title">Operational Highlights</h2>
+        <div class="highlights-header">
+            <span class="section-label">Operational Excellence</span>
+            <h2 class="section-title">Key Highlights</h2>
+        </div>
         <div class="highlights-grid">
-            <div class="highlight-box">
+            <div class="highlight-card">
                 <h3 class="highlight-title">18-Country Coordination</h3>
                 <p class="highlight-text">
                     Navigated regulations, permits, and customs requirements across 18 European nations with zero compliance issues.
                 </p>
             </div>
-            <div class="highlight-box">
+            <div class="highlight-card">
                 <h3 class="highlight-title">Multilingual Support</h3>
                 <p class="highlight-text">
                     Operations center staffed with multilingual coordinators fluent in English, French, German, Spanish, Italian, and Dutch.
                 </p>
             </div>
-            <div class="highlight-box">
+            <div class="highlight-card">
                 <h3 class="highlight-title">Real-Time GPS Tracking</h3>
                 <p class="highlight-text">
                     All 800 vehicles equipped with GPS tracking, allowing tour management to monitor fleet location in real-time.
                 </p>
             </div>
-            <div class="highlight-box">
+            <div class="highlight-card">
                 <h3 class="highlight-title">Perfect On-Time Record</h3>
                 <p class="highlight-text">
                     100% on-time performance across all 52 tour dates. Not a single missed pickup or delayed arrival.
@@ -411,20 +616,43 @@
         </div>
     </section>
 
-        <!-- CANONICAL TESTIMONIALS COMPONENT - DO NOT MODIFY -->
-    <div id="testimonials-root" data-testimonials="[{&quot;text&quot;: &quot;\&quot;Managing logistics for an 800-vehicle deployment across multiple European cities is extraordinarily complex. Carey International handled every detail flawlessly\u2014from coordinating SUVs and Sprinter vans to ensuring our talent and crew arrived on time, every time. Their professionalism and scale are simply unmatched in the industry.\&quot;&quot;, &quot;author&quot;: &quot;Marcus Rodriguez&quot;, &quot;role&quot;: &quot;Global Tour Manager, International Music Productions&quot;}, {&quot;text&quot;: &quot;\&quot;Carey's European operations team is world-class. They coordinated with local vendors in 18 countries, managed cross-border logistics, and delivered flawless service night after night. When you're responsible for transporting 2,500 people across a continent, you need a partner you can trust completely. Carey earned that trust every single day.\&quot;&quot;, &quot;author&quot;: &quot;Jennifer Lee&quot;, &quot;role&quot;: &quot;Tour Logistics Director&quot;}, {&quot;text&quot;: &quot;\&quot;As someone responsible for artist safety and comfort, I needed a transportation partner with impeccable standards. Carey's drivers were professional, discreet, and punctual. Their real-time tracking and 24/7 communication gave me complete peace of mind throughout the entire six-month tour.\&quot;&quot;, &quot;author&quot;: &quot;David Ramirez&quot;, &quot;role&quot;: &quot;Head of Security & Transportation&quot;}]"></div>
-
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <div class="testimonials-header">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Our Partners Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Managing logistics for an 800-vehicle deployment across multiple European cities is extraordinarily complex. Carey International handled every detail flawlessly—from coordinating SUVs and Sprinter vans to ensuring our talent and crew arrived on time, every time."
+                    </p>
+                    <p class="testimonial-author">Marcus Rodriguez</p>
+                    <p class="testimonial-role">Global Tour Manager, International Music Productions</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Carey's European operations team is world-class. They coordinated with local vendors in 18 countries, managed cross-border logistics, and delivered flawless service night after night. When you're responsible for transporting 2,500 people across a continent, you need a partner you can trust completely."
+                    </p>
+                    <p class="testimonial-author">Jennifer Lee</p>
+                    <p class="testimonial-role">Tour Logistics Director</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "As someone responsible for artist safety and comfort, I needed a transportation partner with impeccable standards. Carey's drivers were professional, discreet, and punctual. Their real-time tracking and 24/7 communication gave me complete peace of mind."
+                    </p>
+                    <p class="testimonial-author">David Ramirez</p>
+                    <p class="testimonial-role">Head of Security & Transportation</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
-        <div class="footer-content">
-            <h3 style="font-size: 2rem; margin-bottom: 1rem;">CAREY INTERNATIONAL</h3>
-            <p class="footer-text">Global Logistics. Precision Execution. Unmatched Scale.</p>
-            <p class="footer-text">&copy; 2026 Carey International. All rights reserved.</p>
-        </div>
+        <div class="footer-logo">CAREY INTERNATIONAL</div>
+        <p class="footer-tagline">Global Logistics. Precision Execution. Unmatched Scale.</p>
+        <p class="footer-copyright">© 2024 Carey International. All rights reserved.</p>
     </footer>
 
-
-    
-    <script src="../components/testimonials.js"></script>
 </body>
 </html>
